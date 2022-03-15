@@ -1,14 +1,7 @@
 import sqlalchemy
 from .db_session import SqlAlchemyBase
 
-
-class Category(SqlAlchemyBase):
-    __tablename__ = 'category'
-    id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True,
-                           autoincrement=True)
-    name = sqlalchemy.Column(sqlalchemy.String, nullable=True)
-
-    association_table = sqlalchemy.Table(
+association_table = sqlalchemy.Table(
         'association',
         SqlAlchemyBase.metadata,
         sqlalchemy.Column('news', sqlalchemy.Integer,
@@ -16,3 +9,11 @@ class Category(SqlAlchemyBase):
         sqlalchemy.Column('category', sqlalchemy.Integer,
                           sqlalchemy.ForeignKey('category.id'))
     )
+
+class Category(SqlAlchemyBase):
+    __tablename__ = 'category'
+    id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True,
+                           autoincrement=True)
+    name = sqlalchemy.Column(sqlalchemy.String, nullable=True)
+
+

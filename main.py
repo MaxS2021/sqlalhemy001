@@ -1,7 +1,7 @@
 from flask import Flask
 from flask import url_for, request, render_template, json
 from flask import redirect, make_response, session, abort
-from data import db_session
+from data import db_session, news_api
 from flask_login import LoginManager, login_user, login_required
 from flask_login import logout_user, current_user
 
@@ -175,6 +175,7 @@ def session_test():
 
 def main():
     db_session.global_init("db/blogs.db")
+    app.register_blueprint(news_api.blueprint)
     app.run(port=8000, host='127.0.0.1')
 
 

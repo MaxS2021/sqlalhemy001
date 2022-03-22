@@ -1,6 +1,6 @@
 from requests import get, post, delete
 
-print(get('http://localhost:5000/api/v2/news').json())
+print(get('http://localhost:8000/api/v2/news').json())
 
 #print(get('http://localhost:5000/api/v2/news/1').json())
 #
@@ -14,7 +14,13 @@ print(get('http://localhost:5000/api/v2/news').json())
 # print(post('http://localhost:5000/api/news',
 #            json={'title': 'Заголовок'}).json())
 #
-print(post('http://localhost:5000/api/v2/news',
+print(post('http://localhost:8000/api/news',
+           json={'title': 'Новость 3',
+                 'content': 'Новость добавленная черес API',
+                 'user_id': 2,
+                 'is_private': False}).json())
+
+print(post('http://localhost:8000/api/v2/news',
            json={'title': 'Новость 4',
                  'content': 'Новость добавленная черес API V2',
                  'user_id': 2,
@@ -25,4 +31,4 @@ print(post('http://localhost:5000/api/v2/news',
 #
 # print(delete('http://localhost:5000/api/news/4').json())
 
-print(get('http://localhost:5000/api/news').json())
+print(get('http://localhost:8000/api/news').json())

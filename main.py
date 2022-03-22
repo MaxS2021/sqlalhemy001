@@ -1,3 +1,4 @@
+import os
 from flask import Flask
 from flask import url_for, request, render_template, json, jsonify
 from flask import redirect, make_response, session, abort
@@ -187,7 +188,9 @@ def main():
     api.add_resource(news_resources.NewsListResource, '/api/v2/news')
     # для одного объекта
     api.add_resource(news_resources.NewsResource, '/api/v2/news/<int:news_id>')
-    app.run(port=8000, host='127.0.0.1')
+    port = int(os.environ.get("PORT", 8000))
+    app.run(host='0.0.0.0', port=port)
+    #app.run(port=8000, host='127.0.0.1')
 
 
 if __name__ == '__main__':
